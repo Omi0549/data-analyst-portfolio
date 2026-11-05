@@ -1,0 +1,2 @@
+raw_rows,out_of_range_date,dropoff_not_after_pickup,duration_out_of_range,zero_distance,over_100_miles,nonpositive_fare,nonpositive_total,clean_rows,pct_kept
+10742869,29,133703,114787,394539,432,50702,46303,10140570,94.39

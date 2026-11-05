@@ -1,0 +1,3 @@
+trip_type,trips,avg_fare,avg_miles,fare_per_mile,avg_tip_pct_card
+non-airport,9255878,18.43,2.76,6.67,25.4
+airport,884692,56.08,13.02,4.31,21.7

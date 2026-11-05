@@ -1,0 +1,17 @@
+pu_borough,rnk,pu_zone,trips
+Bronx,1,Mott Haven/Port Morris,6211
+Bronx,2,West Concourse,4827
+Bronx,3,Melrose South,2246
+Brooklyn,1,Williamsburg (North Side),28328
+Brooklyn,2,Williamsburg (South Side),19243
+Brooklyn,3,Greenpoint,18540
+EWR,1,Newark Airport,59
+Manhattan,1,Upper East Side South,421404
+Manhattan,2,Midtown Center,415261
+Manhattan,3,Upper East Side North,359122
+Queens,1,JFK Airport,433422
+Queens,2,LaGuardia Airport,267134
+Queens,3,Astoria,22817
+Staten Island,1,Arrochar/Fort Wadsworth,212
+Staten Island,2,Stapleton,109
+Staten Island,3,South Beach/Dongan Hills,96

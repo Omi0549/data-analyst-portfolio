@@ -1,0 +1,11 @@
+pu_zone,do_zone,trips,avg_fare
+Upper East Side South,Upper East Side North,56456,8.63
+Upper East Side North,Upper East Side South,46971,9.62
+Midtown Center,Upper East Side South,27115,10.68
+Upper East Side South,Midtown Center,26623,11.26
+Upper East Side South,Midtown East,22529,10.25
+Midtown Center,Upper East Side North,21341,14.54
+JFK Airport,Outside of NYC,21220,108.40
+Lincoln Square East,Upper West Side South,20806,8.06
+Upper West Side South,Lincoln Square East,20600,7.85
+Upper East Side North,Midtown Center,20026,15.72

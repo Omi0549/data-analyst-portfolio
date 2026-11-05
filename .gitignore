@@ -7,3 +7,4 @@ __pycache__/
 *.hyper
 ~*.twbr
 Tableau Packaged Workbook.twb
+*.parquet
