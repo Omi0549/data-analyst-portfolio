@@ -1,0 +1,5 @@
+pay_basis_std,rows,hourly_rate_looks_annual,hourly_rate_2_or_less,daily_rate_under_20,min_base,max_base
+ANNUAL,663893,0,0,0,1.00,485000.00
+DAILY,261230,0,0,190,1.00,1113.28
+HOURLY,182725,1724,71716,0,0.50,190941.71
+PRORATED ANNUAL,3951,0,0,0,3143.00,184000.00

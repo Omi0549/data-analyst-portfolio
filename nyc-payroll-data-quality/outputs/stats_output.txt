@@ -1,0 +1,21 @@
+Rows analysed: 329,001 salaried employees, FY2026
+
+1) Spearman correlation, tenure vs annual base pay: rho = 0.463 (p = 0)
+
+2) OLS on log(annual base pay), robust standard errors
+========================================================================================================================
+                                                           coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------------------------------------------------
+Intercept                                               11.0572      0.002   4451.457      0.000      11.052      11.062
+C(work_borough, Treatment('BRONX'))[T.BROOKLYN]          0.0288      0.003      9.501      0.000       0.023       0.035
+C(work_borough, Treatment('BRONX'))[T.MANHATTAN]         0.1094      0.003     42.751      0.000       0.104       0.114
+C(work_borough, Treatment('BRONX'))[T.QUEENS]            0.0800      0.003     27.577      0.000       0.074       0.086
+C(work_borough, Treatment('BRONX'))[T.STATEN ISLAND]     0.0897      0.005     18.188      0.000       0.080       0.099
+tenure_years                                             0.0174   8.04e-05    216.638      0.000       0.017       0.018
+========================================================================================================================
+R-squared: 0.169. Each extra year of tenure is associated with 1.76% higher base pay.
+
+3) Mann-Whitney U, Manhattan vs Brooklyn: p = 0, rank-biserial effect size = 0.183
+   Medians: Manhattan $98,891, Brooklyn $76,057
+
+Caveat: this is descriptive. Job title, agency and union scale are not controlled for, so borough differences mostly reflect which agencies and jobs are located there.

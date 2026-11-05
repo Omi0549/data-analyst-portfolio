@@ -9,6 +9,7 @@ Projects by Om Biswal (BS astrophysics, Arizona State University). Each project 
 | [Olist SQL analysis](olist-sql-analysis/) | What drives customer satisfaction and revenue on a Brazilian e-commerce marketplace? | SQL (SQLite), Python, Tableau Public | 8.1% of delivered orders arrive late; late orders average 2.57 stars vs 4.29 on time |
 | [Olist Tableau dashboard](olist-sql-analysis/#interactive-dashboard) | The same findings as an interactive view | Tableau Public | [Live dashboard](https://public.tableau.com/app/profile/om.biswal/viz/Olist_dashboard_17937939194590/OlistDashboard) |
 | [NYC yellow taxi analysis](nyc-taxi-postgres/) | When and where do taxi trips happen, and what drives fares and tips? | PostgreSQL, SQL window functions, Python | 10.1M trips analysed; airport trips pay $56 vs $18 on average but earn less per mile ($4.31 vs $6.67) |
+| [NYC payroll data quality case study](nyc-payroll-data-quality/) | Can 1.1M employee payroll records be trusted for reporting, and what must be fixed and documented first? | PostgreSQL, Python, Excel, requirements and data documentation | FY2026 source has no agency name in any of 561,580 rows; 13 of 15 quality rules pass after cleaning, 2 are escalated |
 | [Marketing A/B test](ab-test-marketing/) | Did the ad campaign lift conversion compared with a PSA control? | Python (pandas, scipy, statsmodels) | Ad lifted conversion by 0.77 points (95% CI 0.59 to 0.94), but only for users who saw 25+ ads |
 
 ## Running the projects

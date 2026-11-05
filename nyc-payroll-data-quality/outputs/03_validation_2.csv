@@ -1,0 +1,3 @@
+fiscal_year,raw_rows,exact_duplicates_removed,curated_rows,rows_reconcile
+2025,550219,12,550207,True
+2026,561580,6,561574,True

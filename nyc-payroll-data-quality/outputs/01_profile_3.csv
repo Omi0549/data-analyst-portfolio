@@ -1,0 +1,29 @@
+field,value,rows
+borough,MANHATTAN,821339
+borough,QUEENS,121574
+borough,BROOKLYN,93559
+borough,BRONX,51868
+borough,RICHMOND,15120
+borough,OTHER,5879
+borough,WESTCHESTER,1121
+borough,ULSTER,598
+borough,SULLIVAN,249
+borough,DELAWARE,140
+borough,NASSAU,89
+borough,PUTNAM,82
+borough,DUTCHESS,66
+borough,SCHOHARIE,50
+borough,ALBANY,41
+borough,GREENE,11
+borough,WASHINGTON DC,9
+borough,ORANGE,2
+borough,,2
+leave_status,ACTIVE,979021
+leave_status,CEASED,109387
+leave_status,ON LEAVE,11998
+leave_status,SEASONAL,9428
+leave_status,ON SEPARATION LEAVE,1965
+pay_basis,per Annum,663893
+pay_basis,per Day,261230
+pay_basis,per Hour,182725
+pay_basis,Prorated Annual,3951
