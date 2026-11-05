@@ -1,0 +1,102 @@
+=== 1. Data and design checks ===
+rows: 588101 | duplicate users: 0 | missing: 0
+group
+ad     564577
+psa     23524
+share in control (psa): 4.00%
+
+=== 2. Are the groups comparable? (randomization check) ===
+total ads: ad mean 24.8 median 13 | psa mean 24.8 median 12
+Mann-Whitney on total ads: p = 4.69e-11 | rank-biserial effect size = 0.025
+peak day vs group: p = 4.85e-48 | Cramer's V = 0.020
+peak hour vs group: p = 1.09e-28 | Cramer's V = 0.018
+share of users by peak day (%):
+group        ad   psa
+peak_day             
+Friday     15.7  16.2
+Monday     14.8  14.9
+Saturday   14.0  12.1
+Sunday     14.6  13.0
+Thursday   14.0  16.6
+Tuesday    13.2  12.4
+Wednesday  13.7  14.8
+share of users by peak hour (%), hours with the biggest gaps:
+group        ad   psa   gap
+peak_hour                  
+13         8.06  9.22  1.17
+11         7.82  8.76  0.94
+23         3.46  2.63  0.83
+12         8.01  8.76  0.74
+22         4.52  3.90  0.62
+21         5.12  4.60  0.52
+control conversion by peak_day: min 1.40% max 2.26%
+control conversion by peak_hour: min 0.00% max 2.81%
+
+=== 3. Main result: conversion rate ===
+ad : 14,423 / 564,577 = 2.555%
+psa: 420 / 23,524 = 1.785%
+absolute difference: 0.769 percentage points | relative lift: 43.1%
+two-proportion z-test: z = 7.37, p = 1.71e-13
+chi-square test:       chi2 = 54.32, p = 1.71e-13
+95% CI for the difference: 0.595 to 0.943 percentage points
+95% CI for the relative lift (ratio - 1): 30.0% to 57.5%
+95% Wilson CI ad : 2.514% to 2.596%
+95% Wilson CI psa: 1.624% to 1.963%
+bootstrap 95% CI for the difference: 0.593 to 0.940 percentage points
+
+=== 3b. Robustness: adjust for the day/hour imbalance (logistic regression) ===
+unadjusted                odds ratio 1.44 (95% CI 1.31 to 1.59), p = 2.31e-13, average effect 0.77 percentage points
+adjusted for day + hour   odds ratio 1.44 (95% CI 1.31 to 1.59), p = 2.38e-13, average effect 0.77 percentage points
+
+=== 4. Was the test big enough? (power) ===
+power to detect the observed effect with these group sizes: 1.00
+minimum detectable conversion at 80% power: 2.041% (lift 14% vs 1.785%)
+per-arm size for 80% power at the observed lift with a 50/50 split: 5,588
+
+=== 5. Does exposure matter? (ad group, descriptive only) ===
+             mean            count        
+group          ad    psa        ad     psa
+ads_bucket                                
+1            0.16   0.13   54298.0  2308.0
+2-5          0.29   0.34  115664.0  5553.0
+6-10         0.49   0.67   79537.0  3415.0
+11-25        1.02   1.00  163135.0  6112.0
+26-50        3.54   2.66   85740.0  3273.0
+51-100      11.63   5.77   44149.0  1853.0
+100+        17.14  11.88   22054.0  1010.0
+saw 25 ads or fewer    ad 0.60% (n=412,634) vs psa 0.61% (n=17,388) | diff -0.01 pp, p = 0.86
+saw more than 25 ads   ad 7.87% (n=151,943) vs psa 5.12% (n=6,136) | diff 2.75 pp, p = 3.05e-15
+share of ad-group conversions from users who saw more than 25 ads: 82.9%
+
+=== 6. Subgroups: day and hour (exploratory; hours with under 100 control users skipped) ===
+dimension     value  n_ad  n_psa  ad_rate_pct  psa_rate_pct  p_value  lift_pp  p_bonferroni  significant_after_correction
+ peak_day    Friday 88805   3803       2.2465        1.6303   0.0116   0.6162        0.3124                         False
+ peak_day    Monday 83571   3502       3.3241        2.2559   0.0005   1.0683        0.0137                          True
+ peak_day  Saturday 78802   2858       2.1307        1.3996   0.0075   0.7311        0.2021                         False
+ peak_day    Sunday 82332   3059       2.4620        2.0595   0.1572   0.4025        1.0000                         False
+ peak_day  Thursday 79077   3905       2.1637        2.0230   0.5548   0.1407        1.0000                         False
+ peak_day   Tuesday 74572   2907       3.0440        1.4448   0.0000   1.5992        0.0000                          True
+ peak_day Wednesday 77418   3490       2.5356        1.5759   0.0004   0.9597        0.0102                          True
+peak_hour         0  5309    227       1.9213        0.0000   0.0350   1.9213        0.9461                         False
+peak_hour         1  4615    187       1.3434        0.0000   0.1106   1.3434        1.0000                         False
+peak_hour         2  5152    181       0.7570        0.0000   0.2401   0.7570        1.0000                         False
+peak_hour         7  6168    237       1.8482        0.8439   0.2552   1.0044        1.0000                         False
+peak_hour         8 16968    659       1.9861        1.0622   0.0925   0.9239        1.0000                         False
+peak_hour         9 29802   1202       1.9529        1.0815   0.0309   0.8714        0.8333                         False
+peak_hour        10 37454   1485       2.1840        1.3468   0.0292   0.8372        0.7890                         False
+peak_hour        11 44149   2061       2.2469        1.4556   0.0170   0.7913        0.4577                         False
+peak_hour        12 45238   2060       2.4139        1.6990   0.0375   0.7149        1.0000                         False
+peak_hour        13 45485   2170       2.5063        1.6590   0.0129   0.8473        0.3491                         False
+peak_hour        14 43779   1869       2.8575        1.6051   0.0013   1.2524        0.0358                          True
+peak_hour        15 42855   1828       2.9845        2.5164   0.2479   0.4681        1.0000                         False
+peak_hour        16 35963   1604       3.0893        2.8055   0.5196   0.2838        1.0000                         False
+peak_hour        17 33605   1383       2.8537        2.0246   0.0680   0.8292        1.0000                         False
+peak_hour        18 31052   1271       2.7470        2.5177   0.6234   0.2293        1.0000                         False
+peak_hour        19 29169   1183       2.6809        2.4514   0.6313   0.2295        1.0000                         False
+peak_hour        20 27846   1077       3.0274        1.7642   0.0168   1.2632        0.4523                         False
+peak_hour        21 28895   1081       2.9175        2.2202   0.1792   0.6973        1.0000                         False
+peak_hour        22 25515    917       2.6455        1.6358   0.0595   1.0097        1.0000                         False
+peak_hour        23 19547    619       2.2970        1.2924   0.0982   1.0046        1.0000                         False
+subgroup tests: 27 | significant raw (p<0.05): 13 | significant after Bonferroni: 4
+
+Saved charts and tables to D:\code\portfolio\ab-test-marketing\outputs

@@ -1,0 +1,5 @@
+payment_type,orders,order_share_pct,avg_order_value
+credit_card,72825,75.5,143.24
+boleto,19191,19.9,121.4
+voucher,2977,3.1,94.8
+debit_card,1484,1.5,119.86

@@ -1,0 +1,9 @@
+/.venv/
+__pycache__/
+.ipynb_checkpoints/
+*.db
+*.sqlite
+/*/data/*.csv
+*.hyper
+~*.twbr
+Tableau Packaged Workbook.twb

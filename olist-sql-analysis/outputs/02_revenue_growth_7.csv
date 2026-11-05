@@ -1,0 +1,5 @@
+order_value_band,orders,freight_pct_of_items
+1) under 50,28791,48.4
+2) 50-100,27726,25.4
+3) 100-200,25313,17.4
+4) 200+,14648,9.0
