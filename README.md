@@ -1,6 +1,6 @@
 # Data Analyst Portfolio
 
-Projects by Om Biswal (MS astrophysics, Arizona State University). Each project starts from a business-style question, uses a public dataset, and reports findings that were checked by running the code.
+Projects by Om Biswal (BS astrophysics, Arizona State University). Each project starts from a business-style question, uses a public dataset, and reports findings that were checked by running the code.
 
 ## Projects
 
