@@ -1,0 +1,121 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "18cbc23ee523d46d49c7",
+  "position": {
+    "x": 734.28346626760674,
+    "y": 222.43354571961925,
+    "z": 6,
+    "height": 350.08006911553713,
+    "width": 545.97324858452,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_issue"
+                    }
+                  },
+                  "Property": "issue_name"
+                }
+              },
+              "queryRef": "dim_issue.issue_name",
+              "nativeQueryRef": "issue_name",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Records Flagged"
+                }
+              },
+              "queryRef": "_Measures.Records Flagged",
+              "nativeQueryRef": "Records Flagged"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Records Flagged"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Records Flagged by issue (FY2025 + FY2026)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f19424b56024534aec18",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_issue"
+              }
+            },
+            "Property": "issue_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5a0d81ab26954ec16270",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Records Flagged"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

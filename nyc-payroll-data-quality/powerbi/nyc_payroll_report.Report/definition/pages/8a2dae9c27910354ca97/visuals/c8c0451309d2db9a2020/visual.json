@@ -1,0 +1,32 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "c8c0451309d2db9a2020",
+  "position": {
+    "x": 15.165923571792222,
+    "y": 674.88359894475389,
+    "z": 10,
+    "height": 45.497770715376667,
+    "width": 851.81937394899649,
+    "tabOrder": 10
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Source: NYC Open Data, Citywide Payroll (k397-673e), FY2025-FY2026. Analysis by Om Biswal. Stakeholders and thresholds are simulated."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

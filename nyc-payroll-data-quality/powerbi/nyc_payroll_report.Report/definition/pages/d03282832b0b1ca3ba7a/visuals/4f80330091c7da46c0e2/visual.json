@@ -1,0 +1,89 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "4f80330091c7da46c0e2",
+  "position": {
+    "x": 17.693577500424258,
+    "y": 308.3737792931085,
+    "z": 6,
+    "height": 375.3566084018575,
+    "width": 772.19827519708736,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_issue"
+                    }
+                  },
+                  "Property": "issue_name"
+                }
+              },
+              "queryRef": "dim_issue.issue_name",
+              "nativeQueryRef": "issue_name",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Records Flagged"
+                }
+              },
+              "queryRef": "_Measures.Records Flagged",
+              "nativeQueryRef": "Records Flagged"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Records Flagged"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Data quality issues for this agency '"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 1223.9274701574764,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 175.02180257304923,
+            "y": 446.50634152655465
+          },
+          "nodeIndex": "dim_agency",
+          "nodeLineageTag": "c8e57006-be22-4db5-9605-53cf91b40889",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 756.92747015747648,
+            "y": 450.718386690233
+          },
+          "nodeIndex": "dim_borough",
+          "nodeLineageTag": "36377f21-e7e6-48a4-98ab-2ea2cfc643b4",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 77.4879110867858,
+            "y": 268.09385286938232
+          },
+          "nodeIndex": "dim_issue",
+          "nodeLineageTag": "54ac69b0-cc62-495e-a819-f52221e03198",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 496.62626962923321,
+            "y": 646.56357116845538
+          },
+          "nodeIndex": "dim_pay_basis",
+          "nodeLineageTag": "747eca53-4fb3-4ce5-8d80-4c43a1546ceb",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 364.05786724580207,
+            "y": 64.701431162871813
+          },
+          "nodeIndex": "dim_year",
+          "nodeLineageTag": "6597b1ed-40b1-4853-87b8-0c7245e65711",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 990.92747015747648,
+            "y": 300.28178558422769
+          },
+          "nodeIndex": "dq_reconciliation",
+          "nodeLineageTag": "dcd2286c-7c33-4291-91d9-9507a1af7304",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1274.9274701574764,
+            "y": 250.28178558422769
+          },
+          "nodeIndex": "dq_rules",
+          "nodeLineageTag": "a9f35644-fde6-4d56-b49d-6c33793042c3",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": -50
+          },
+          "nodeIndex": "fact_issue_by_agency",
+          "nodeLineageTag": "597030db-cfd4-4328-ab9a-5d9321021b83",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 469.85538217605409,
+            "y": 293.80480431151921
+          },
+          "nodeIndex": "fact_payroll",
+          "nodeLineageTag": "c94e998a-37dd-4502-9431-a96ad13d6445",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1508.9274701574764,
+            "y": 348.28178558422769
+          },
+          "nodeIndex": "_Measures",
+          "nodeLineageTag": "6390cfa2-5407-43f1-a5cf-a2a668ae3a15",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

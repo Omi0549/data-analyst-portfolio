@@ -1,0 +1,19 @@
+table dim_borough
+	lineageTag: 36377f21-e7e6-48a4-98ab-2ea2cfc643b4
+
+	column work_borough
+		dataType: string
+		lineageTag: 8b31f367-fd2e-4e25-a0d4-aa8c3a1a4d11
+		summarizeBy: none
+		sourceColumn: work_borough
+
+	partition dim_borough = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataFolder & "dim_borough.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Headers, {{"work_borough", type text}}, "en-US")
+				in
+					Typed
+

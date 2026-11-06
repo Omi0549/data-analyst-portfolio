@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "8a2dae9c27910354ca97",
+  "displayName": "Workforce Cost",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "visualInteractions": [
+    {
+      "source": "a3e51a7441b807b60640",
+      "target": "e42c49ae1a82a75d0e01",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a3e51a7441b807b60640",
+      "target": "5bc2d0bc785ae2924b82",
+      "type": "DataFilter"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+table dim_pay_basis
+	lineageTag: 747eca53-4fb3-4ce5-8d80-4c43a1546ceb
+
+	column pay_basis
+		dataType: string
+		lineageTag: 0cdd1a4b-508f-4190-8f09-a09fe746753d
+		summarizeBy: none
+		sourceColumn: pay_basis
+
+	partition dim_pay_basis = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataFolder & "dim_pay_basis.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Headers, {{"pay_basis", type text}}, "en-US")
+				in
+					Typed
+

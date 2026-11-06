@@ -1,0 +1,16 @@
+rule_id,req_id,rule,raw_failed,raw_total,raw_fail_pct,curated_failed,curated_total,curated_fail_pct,threshold_pct,curated_status
+R01,REQ-01,Exact duplicate rows,18,1111799,0.002,0,1111781,0.0,0.0,PASS
+R02,REQ-01,Same appointment and pay rate recorded twice (possible duplicate),320,1111799,0.029,320,1111781,0.029,0.1,PASS
+R03,REQ-02,Agency name missing (FY2026 source gap),561580,1111799,50.511,0,1111781,0.0,0.0,PASS
+R04,REQ-02,First or last name missing,756,1111799,0.068,755,1111781,0.068,0.1,PASS
+R05,REQ-02,Job title missing,96,1111799,0.009,96,1111781,0.009,0.1,PASS
+R06,REQ-02,Work borough unknown or OTHER,5881,1111799,0.529,5881,1111781,0.529,1.0,PASS
+R07,REQ-03,"Agency start date invalid (9999 sentinel, future or missing)",40,1111799,0.004,40,1111781,0.004,0.1,PASS
+R08,REQ-03,Negative regular or overtime hours,999,1111799,0.09,0,1106582,0.0,0.0,PASS
+R09,REQ-03,Negative regular or overtime pay,3266,1111799,0.294,0,1106582,0.0,0.0,PASS
+R10,REQ-03,"Regular hours above 2,500",19,1111799,0.002,0,1106582,0.0,0.0,PASS
+R11,REQ-04,Overtime hours and overtime pay disagree (one is zero),7287,1111799,0.655,7287,1111781,0.655,0.1,FAIL
+R12,REQ-04,Job title spelled differently from its standard form,10898,1111799,0.98,0,1111781,0.0,0.0,PASS
+R13,REQ-04,Borough uses a non-standard name (RICHMOND),15120,1111799,1.36,0,1111781,0.0,0.0,PASS
+R14,REQ-04,"Hourly pay basis with an annual-sized rate (over $10,000)",1724,1111799,0.155,0,1106582,0.0,0.0,PASS
+R15,REQ-05,"Pay cannot be annualized (placeholder, mislabeled or low rate)",73630,1111799,6.623,73619,1111781,6.622,5.0,FAIL

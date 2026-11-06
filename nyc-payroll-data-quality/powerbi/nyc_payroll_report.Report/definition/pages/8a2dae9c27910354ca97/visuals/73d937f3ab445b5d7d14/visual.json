@@ -1,0 +1,71 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "73d937f3ab445b5d7d14",
+  "position": {
+    "x": 15.151571198697912,
+    "y": 389.39537980653637,
+    "z": 7,
+    "height": 218.18262526124994,
+    "width": 254.54639613812492,
+    "tabOrder": 7
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_borough"
+                    }
+                  },
+                  "Property": "work_borough"
+                }
+              },
+              "queryRef": "dim_borough.work_borough",
+              "nativeQueryRef": "work_borough",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Basic'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "5c7a707c0598cd86be31",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_borough"
+              }
+            },
+            "Property": "work_borough"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

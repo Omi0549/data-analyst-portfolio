@@ -1,0 +1,54 @@
+table dim_year
+	lineageTag: 6597b1ed-40b1-4853-87b8-0c7245e65711
+
+	column fiscal_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 00d954c7-1054-404f-953b-7f850a156658
+		summarizeBy: none
+		sourceColumn: fiscal_year
+
+	column fiscal_year_label
+		dataType: string
+		lineageTag: 74e255bd-f1d5-49c3-878c-614b80a5ab33
+		summarizeBy: none
+		sourceColumn: fiscal_year_label
+
+	column period_start
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ff95d479-3494-4aef-84b6-eaa83512d74c
+		summarizeBy: none
+		sourceColumn: period_start
+
+		variation Variation
+			isDefault
+			relationship: ad6bce27-7399-4558-9600-19aa7a44e250
+			defaultHierarchy: LocalDateTable_532d8bac-2b80-4141-b274-eafbbe118535.'Date Hierarchy'
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column period_end
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: db7b24b2-a745-4780-ab45-dac965658d73
+		summarizeBy: none
+		sourceColumn: period_end
+
+		variation Variation
+			isDefault
+			relationship: 5577d59d-9ef5-45c9-bcae-1e42f94b340d
+			defaultHierarchy: LocalDateTable_ec8359b7-3206-433a-a256-5fbde21cc5ae.'Date Hierarchy'
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition dim_year = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataFolder & "dim_year.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Headers, {{"fiscal_year", Int64.Type}, {"fiscal_year_label", type text}, {"period_start", type date}, {"period_end", type date}}, "en-US")
+				in
+					Typed
+

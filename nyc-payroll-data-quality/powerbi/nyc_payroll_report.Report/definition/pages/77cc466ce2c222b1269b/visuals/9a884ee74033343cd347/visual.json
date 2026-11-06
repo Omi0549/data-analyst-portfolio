@@ -1,0 +1,151 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "9a884ee74033343cd347",
+  "position": {
+    "x": 10.110615714528148,
+    "y": 572.51361483515643,
+    "z": 7,
+    "height": 102.3699841095975,
+    "width": 1119.7506903839924,
+    "tabOrder": 7
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dq_reconciliation"
+                    }
+                  },
+                  "Property": "fiscal_year"
+                }
+              },
+              "queryRef": "dq_reconciliation.fiscal_year",
+              "nativeQueryRef": "fiscal_year"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dq_reconciliation"
+                    }
+                  },
+                  "Property": "raw_rows"
+                }
+              },
+              "queryRef": "dq_reconciliation.raw_rows",
+              "nativeQueryRef": "raw_rows"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dq_reconciliation"
+                    }
+                  },
+                  "Property": "exact_duplicates_removed"
+                }
+              },
+              "queryRef": "dq_reconciliation.exact_duplicates_removed",
+              "nativeQueryRef": "exact_duplicates_removed"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dq_reconciliation"
+                    }
+                  },
+                  "Property": "curated_rows"
+                }
+              },
+              "queryRef": "dq_reconciliation.curated_rows",
+              "nativeQueryRef": "curated_rows"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dq_reconciliation"
+                    }
+                  },
+                  "Property": "rows_reconcile"
+                }
+              },
+              "queryRef": "dq_reconciliation.rows_reconcile",
+              "nativeQueryRef": "rows_reconcile"
+            }
+          ],
+          "showAll": true
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dq_reconciliation"
+                  }
+                },
+                "Property": "fiscal_year"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Row reconciliation: raw to curated'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "20531b5490a58538b953",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dq_reconciliation"
+              }
+            },
+            "Property": "rows_reconcile"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

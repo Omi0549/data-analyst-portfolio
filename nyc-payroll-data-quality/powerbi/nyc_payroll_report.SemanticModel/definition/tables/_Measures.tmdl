@@ -1,0 +1,122 @@
+table _Measures
+	lineageTag: 6390cfa2-5407-43f1-a5cf-a2a668ae3a15
+
+	measure Records = SUM(fact_payroll[records])
+		formatString: #,0
+		lineageTag: 7a3b01f1-513d-42d3-a44d-78a44fe8bff2
+
+	measure 'Gross Pay' = SUM(fact_payroll[gross_pay])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 6f7380b7-0e99-4733-8a03-9afbae2574f9
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Overtime Pay' = SUM(fact_payroll[overtime_pay])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 33b9b1ee-4bd9-4c31-8c7e-65ed85955ca7
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Overtime %' = ```
+			DIVIDE([Overtime Pay], [Gross Pay])
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 60a6c0db-ffbd-45c7-bfcc-fb5de16e82cc
+
+	measure 'Avg Annualized Base' = ```
+			DIVIDE(SUM(fact_payroll[annualized_base_sum]), SUM(fact_payroll[annualized_records]))
+			
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 6e7fa4f5-4b26-4863-9df4-c1e5b37e7c7f
+
+	measure 'Records With Warning' = ```
+			SUM(fact_payroll[records_with_warning])
+			
+			```
+		formatString: #,0
+		lineageTag: bed62e94-d0da-4099-b4b1-3457df084c23
+
+	measure 'Warning %' = ```
+			DIVIDE([Records With Warning], [Records])
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b6df0eef-7088-464f-8746-a1d6c2bf3d8b
+
+	measure 'Annualizable %' = ```
+			DIVIDE(SUM(fact_payroll[annualized_records]), [Records])
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 519a52cd-41ea-4302-bfb2-361ee9c613ab
+
+	measure 'Gross Pay PY' = ```
+			
+			VAR cy = SELECTEDVALUE(dim_year[fiscal_year])
+			RETURN
+			CALCULATE([Gross Pay], FILTER(ALL(dim_year), dim_year[fiscal_year] = cy - 1))
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 5bba6b48-d57c-4db1-b6d3-ab3481d49e7a
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Gross Pay YoY %' = ```
+			DIVIDE([Gross Pay] - [Gross Pay PY], [Gross Pay PY])
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 867256fd-b5aa-4cb9-997c-5d12448713ff
+
+	measure 'Rules Passing' = ```
+			COUNTROWS(FILTER(dq_rules, dq_rules[curated_fail_pct] <= dq_rules[threshold_pct]))
+			
+			```
+		formatString: 0
+		lineageTag: 7a42b040-afa3-435c-96c2-17293f587474
+
+	measure 'Rules Failing' = ```
+			COUNTROWS(dq_rules) - [Rules Passing]
+			
+			```
+		formatString: 0
+		lineageTag: 0728b89f-bea9-42c6-b1a4-53642aaf7676
+
+	measure 'Rule Status' = ```
+			IF(MAX(dq_rules[curated_fail_pct]) <= MAX(dq_rules[threshold_pct]), "PASS", "FAIL")
+			
+			```
+		lineageTag: 63dd3b40-4fbf-4827-8e55-fccd05b84459
+
+	measure 'Records Flagged' = ```
+			SUM(fact_issue_by_agency[records_flagged])
+			
+			```
+		formatString: #,0
+		lineageTag: 0253b0bc-f589-43a1-87eb-981ca42f7338
+
+	column Column1
+		dataType: string
+		isHidden
+		lineageTag: ffd167f6-d7a9-4726-ab70-306f03ba8b44
+		summarizeBy: none
+		sourceColumn: Column1
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,25 @@
+table dim_issue
+	lineageTag: 54ac69b0-cc62-495e-a819-f52221e03198
+
+	column issue_code
+		dataType: string
+		lineageTag: 168e5fc7-f77c-4294-ad54-c6edfda585e9
+		summarizeBy: none
+		sourceColumn: issue_code
+
+	column issue_name
+		dataType: string
+		lineageTag: 5855072b-2773-416a-9730-f57ef54b48b7
+		summarizeBy: none
+		sourceColumn: issue_name
+
+	partition dim_issue = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataFolder & "dim_issue.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Headers, {{"issue_code", type text}, {"issue_name", type text}}, "en-US")
+				in
+					Typed
+

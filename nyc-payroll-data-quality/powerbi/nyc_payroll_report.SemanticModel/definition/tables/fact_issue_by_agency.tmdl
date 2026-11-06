@@ -1,0 +1,40 @@
+table fact_issue_by_agency
+	lineageTag: 597030db-cfd4-4328-ab9a-5d9321021b83
+
+	column fiscal_year
+		dataType: int64
+		formatString: 0
+		lineageTag: cd895e56-afa7-4201-9a29-b5bc2efe1296
+		summarizeBy: none
+		sourceColumn: fiscal_year
+
+	column payroll_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 1a4b8362-38c5-4be4-9c75-27ddf4a71d2b
+		summarizeBy: none
+		sourceColumn: payroll_number
+
+	column issue_code
+		dataType: string
+		lineageTag: 0217d5f3-eacc-4a03-a3fc-2d095c3ff851
+		summarizeBy: none
+		sourceColumn: issue_code
+
+	column records_flagged
+		dataType: int64
+		formatString: 0
+		lineageTag: fb2531b2-03f2-4482-9136-bc3363ec1c71
+		summarizeBy: none
+		sourceColumn: records_flagged
+
+	partition fact_issue_by_agency = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataFolder & "fact_issue_by_agency.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Headers, {{"fiscal_year", Int64.Type}, {"payroll_number", Int64.Type}, {"issue_code", type text}, {"records_flagged", Int64.Type}}, "en-US")
+				in
+					Typed
+

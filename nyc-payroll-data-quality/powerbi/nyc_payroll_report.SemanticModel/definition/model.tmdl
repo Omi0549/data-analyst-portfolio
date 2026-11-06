@@ -1,0 +1,29 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["dim_agency","dim_borough","dim_issue","dim_pay_basis","dim_year","dq_reconciliation","dq_rules","fact_issue_by_agency","fact_payroll","DataFolder","_Measures"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table dim_agency
+ref table dim_borough
+ref table dim_issue
+ref table dim_pay_basis
+ref table dim_year
+ref table dq_reconciliation
+ref table dq_rules
+ref table fact_issue_by_agency
+ref table fact_payroll
+ref table DateTableTemplate_8228f939-f20c-4861-9945-5b7128a1625c
+ref table LocalDateTable_532d8bac-2b80-4141-b274-eafbbe118535
+ref table LocalDateTable_ec8359b7-3206-433a-a256-5fbde21cc5ae
+ref table _Measures
+

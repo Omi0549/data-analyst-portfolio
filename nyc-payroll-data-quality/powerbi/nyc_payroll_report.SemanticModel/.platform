@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "nyc_payroll_report"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "bec2eb0b-cdb3-42d8-937a-648837afe993"
+  }
+}

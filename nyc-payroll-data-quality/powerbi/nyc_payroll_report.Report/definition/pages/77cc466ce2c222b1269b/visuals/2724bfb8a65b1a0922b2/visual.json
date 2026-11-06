@@ -1,0 +1,289 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "2724bfb8a65b1a0922b2",
+  "position": {
+    "x": 0,
+    "y": 209.79527607645906,
+    "z": 5,
+    "height": 362.71833875869731,
+    "width": 734.28346626760674,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dq_rules"
+                    }
+                  },
+                  "Property": "rule_id"
+                }
+              },
+              "queryRef": "dq_rules.rule_id",
+              "nativeQueryRef": "rule_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dq_rules"
+                    }
+                  },
+                  "Property": "rule"
+                }
+              },
+              "queryRef": "dq_rules.rule",
+              "nativeQueryRef": "rule"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dq_rules"
+                    }
+                  },
+                  "Property": "curated_fail_pct"
+                }
+              },
+              "queryRef": "dq_rules.curated_fail_pct",
+              "nativeQueryRef": "curated_fail_pct"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dq_rules"
+                    }
+                  },
+                  "Property": "threshold_pct"
+                }
+              },
+              "queryRef": "dq_rules.threshold_pct",
+              "nativeQueryRef": "threshold_pct"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Rule Status"
+                }
+              },
+              "queryRef": "_Measures.Rule Status",
+              "nativeQueryRef": "Rule Status"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dq_rules"
+                  }
+                },
+                "Property": "rule_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 0,
+                              "Left": {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "_Measures"
+                                    }
+                                  },
+                                  "Property": "Rule Status"
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "'FAIL'"
+                                }
+                              }
+                            },
+                            "Annotations": {
+                              "PowerBI.SQExprEvaluationKind": 1,
+                              "PowerBI.SQExprTextOperatorOption": 2
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#E66C37'"
+                            }
+                          }
+                        },
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 0,
+                              "Left": {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "_Measures"
+                                    }
+                                  },
+                                  "Property": "Rule Status"
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "'PASS'"
+                                }
+                              }
+                            },
+                            "Annotations": {
+                              "PowerBI.SQExprEvaluationKind": 1,
+                              "PowerBI.SQExprTextOperatorOption": 2
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#0FF758'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "_Measures.Rule Status"
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "662413c480a35e626926",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dq_rules"
+              }
+            },
+            "Property": "rule_id"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "e77d15f4b020a4052e08",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dq_rules"
+              }
+            },
+            "Property": "rule"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a842df2b7cb49b8cad01",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dq_rules"
+              }
+            },
+            "Property": "curated_fail_pct"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "2cc499ae687c700d181e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dq_rules"
+              }
+            },
+            "Property": "threshold_pct"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "718e9c053eba306ca088",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Rule Status"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+table dq_reconciliation
+	lineageTag: dcd2286c-7c33-4291-91d9-9507a1af7304
+
+	column fiscal_year
+		dataType: int64
+		formatString: 0
+		lineageTag: b98069f5-6f5c-44d9-baa2-903b355e99a6
+		summarizeBy: none
+		sourceColumn: fiscal_year
+
+	column raw_rows
+		dataType: int64
+		formatString: #,0
+		lineageTag: d8244c3f-f5d5-438b-ab30-9700b550721d
+		summarizeBy: none
+		sourceColumn: raw_rows
+
+	column exact_duplicates_removed
+		dataType: int64
+		formatString: 0
+		lineageTag: c7e1f900-67ef-431a-a30d-a493325dbecc
+		summarizeBy: none
+		sourceColumn: exact_duplicates_removed
+
+	column curated_rows
+		dataType: int64
+		formatString: #,0
+		lineageTag: 53fd2683-860c-4b36-b605-4c98b872051e
+		summarizeBy: none
+		sourceColumn: curated_rows
+
+	column rows_reconcile
+		dataType: boolean
+		lineageTag: daef2765-d206-47a7-a715-4cbfabc6a917
+		summarizeBy: none
+		sourceColumn: rows_reconcile
+
+	partition dq_reconciliation = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataFolder & "dq_reconciliation.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Headers, {{"fiscal_year", Int64.Type}, {"raw_rows", Int64.Type}, {"exact_duplicates_removed", Int64.Type}, {"curated_rows", Int64.Type}, {"rows_reconcile", type logical}}, "en-US")
+				in
+					Typed
+

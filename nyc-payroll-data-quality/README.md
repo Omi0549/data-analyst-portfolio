@@ -27,6 +27,7 @@ The stakeholders, requirements and thresholds in `docs/01_requirements.md` are *
 | SQL (PostgreSQL) | `sql/01_profile.sql`, `02_clean.sql`, `03_validation.sql`, `04_analysis.sql` |
 | Python | `load_raw.py`, `run_pipeline.py` (one-command automation), `stats_analysis.py`, `build_scorecard.py`, `make_charts.py` |
 | Report | `outputs/dq_scorecard.xlsx`: Excel scorecard with live pass/fail formulas |
+| Power BI | [powerbi/](powerbi/): 3-page report on a star schema (see below) |
 
 ## Method
 1. **Load raw as text** so no defect is hidden by type conversion.
@@ -57,6 +58,26 @@ All numbers were produced by running the code in this repo.
 ![Data quality issues](outputs/chart_dq_issues.png)
 ![Agencies with the most flagged records](outputs/chart_agency_warnings.png)
 ![Median pay by borough](outputs/chart_pay_by_borough.png)
+
+## Power BI report
+
+A 3-page Power BI report built on aggregated extracts of the curated table, so a finance or workforce team can see payroll cost and how much of the data they can trust.
+
+| Page | What it shows |
+|---|---|
+| Workforce Cost | Gross pay, overtime pay and overtime %, average annualized base pay and year-over-year growth, with FY and borough slicers, top 10 agencies and pay by borough |
+| Data Quality Scorecard | 13 of 15 rules passing, PASS/FAIL table with thresholds, records flagged by issue, raw-to-curated row reconciliation, and the two escalated failures |
+| Agency detail | Drill-through page: pick an agency on page 1 to see its pay, overtime %, warning % and data quality issues |
+
+![Workforce cost page](powerbi/screenshots/page1_workforce_cost.png)
+![Data quality scorecard page](powerbi/screenshots/page2_data_quality.png)
+![Agency detail drill-through page](powerbi/screenshots/page3_agency_detail.png)
+
+**Model:** a star schema with two fact tables (payroll by year, agency, borough and pay basis; data quality issues by year and agency) sharing year and agency dimensions. Measures are written in DAX, including a year-over-year measure built without a date table and a PASS/FAIL measure driven by the rule thresholds. Distinct employee counts are left out on purpose because they cannot be added across groups.
+
+**Checks:** report totals were compared with the SQL results. FY2025 gross pay is $34.46B and FY2026 is $36.33B (+5.42%), and overtime is 8.48% and 8.32% of gross pay, matching the figures above.
+
+**To open it:** open `powerbi/nyc_payroll_report.pbip` in Power BI Desktop (free, Windows). The file is a Power BI Project (text-based, git-friendly). It reads the CSVs in `powerbi/data/`. If the data does not load, set the `DataFolder` parameter (Home > Transform data > Edit parameters) to the full path of your local `powerbi/data/` folder, ending in a backslash. To rebuild the CSVs after re-running the pipeline: `python powerbi/export_for_powerbi.py`. The exports are aggregated counts and sums with no names or personal data.
 
 ## Limitations
 No employee ID exists, so people are matched on name, agency and start date and employee counts are estimates. Only two years are used, so no forecasting is attempted. Thresholds and assumptions are judgment calls listed in [docs/04_assumptions_limitations.md](docs/04_assumptions_limitations.md).

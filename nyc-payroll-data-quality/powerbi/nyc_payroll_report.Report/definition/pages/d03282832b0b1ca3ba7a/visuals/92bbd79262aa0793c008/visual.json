@@ -1,0 +1,55 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "92bbd79262aa0793c008",
+  "position": {
+    "x": 63.191348215800929,
+    "y": 20.221231429056296,
+    "z": 1,
+    "height": 180.72725589719064,
+    "width": 1023.699841095975,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_agency"
+                    }
+                  },
+                  "Property": "agency_name"
+                }
+              },
+              "queryRef": "dim_agency.agency_name",
+              "nativeQueryRef": "agency_name"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "c34da03a9446113006b0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_agency"
+              }
+            },
+            "Property": "agency_name"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

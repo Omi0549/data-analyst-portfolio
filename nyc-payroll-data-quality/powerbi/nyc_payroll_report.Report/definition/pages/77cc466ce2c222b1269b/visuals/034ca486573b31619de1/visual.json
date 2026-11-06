@@ -1,0 +1,32 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "034ca486573b31619de1",
+  "position": {
+    "x": 524.48819019114774,
+    "y": 614.219904657585,
+    "z": 8,
+    "height": 44.23394375106065,
+    "width": 755.7685246609791,
+    "tabOrder": 8
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "R11 (overtime hours and pay disagree, 0.66% against a0.1% target) and R15 (6.6% of the rows cannot be annualized, against a 5% target) fail and are escalated to the data owner."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

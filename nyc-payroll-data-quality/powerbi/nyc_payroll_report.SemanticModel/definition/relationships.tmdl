@@ -1,0 +1,38 @@
+relationship 4b248546-8131-48e9-b3eb-535cf1cd890f
+	fromColumn: fact_payroll.fiscal_year
+	toColumn: dim_year.fiscal_year
+
+relationship 8929d4a5-9988-4f7b-b471-35d1fe85c8d7
+	fromColumn: fact_issue_by_agency.fiscal_year
+	toColumn: dim_year.fiscal_year
+
+relationship d8cc11c2-2d5d-4bb2-9415-6076fc8bb5bf
+	fromColumn: fact_payroll.payroll_number
+	toColumn: dim_agency.payroll_number
+
+relationship 4e94822e-3d8d-40a6-b3b6-2c03e9545d78
+	fromColumn: fact_issue_by_agency.payroll_number
+	toColumn: dim_agency.payroll_number
+
+relationship 79846b90-6dc2-4e60-a1d9-633264163544
+	fromColumn: fact_payroll.work_borough
+	toColumn: dim_borough.work_borough
+
+relationship 640a5e7f-5043-4a9d-acd3-16fa4ddaf430
+	fromColumn: fact_payroll.pay_basis
+	toColumn: dim_pay_basis.pay_basis
+
+relationship 2526e150-5705-4295-9ad7-15cc4f9be9f8
+	fromColumn: fact_issue_by_agency.issue_code
+	toColumn: dim_issue.issue_code
+
+relationship ad6bce27-7399-4558-9600-19aa7a44e250
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_year.period_start
+	toColumn: LocalDateTable_532d8bac-2b80-4141-b274-eafbbe118535.Date
+
+relationship 5577d59d-9ef5-45c9-bcae-1e42f94b340d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_year.period_end
+	toColumn: LocalDateTable_ec8359b7-3206-433a-a256-5fbde21cc5ae.Date
+

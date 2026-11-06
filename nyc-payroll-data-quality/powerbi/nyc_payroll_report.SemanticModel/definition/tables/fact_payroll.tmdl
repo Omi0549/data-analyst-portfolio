@@ -1,0 +1,97 @@
+table fact_payroll
+	lineageTag: c94e998a-37dd-4502-9431-a96ad13d6445
+
+	column fiscal_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 8c3cfa3a-d90d-4ab8-a527-d3a77b9b296f
+		summarizeBy: none
+		sourceColumn: fiscal_year
+
+	column payroll_number
+		dataType: int64
+		formatString: 0
+		lineageTag: b2cda7ca-06bc-459b-9d2e-1a370e9783fa
+		summarizeBy: none
+		sourceColumn: payroll_number
+
+	column work_borough
+		dataType: string
+		lineageTag: 7cbad1d7-c618-4d60-bd90-5b9d07ca2afd
+		summarizeBy: none
+		sourceColumn: work_borough
+
+	column pay_basis
+		dataType: string
+		lineageTag: dd682a27-dd56-4aea-8a45-2737281f79ae
+		summarizeBy: none
+		sourceColumn: pay_basis
+
+	column records
+		dataType: int64
+		formatString: 0
+		lineageTag: 6bb1b3ab-2529-4d6a-b471-731d37ee9f1e
+		summarizeBy: none
+		sourceColumn: records
+
+	column report_ready_records
+		dataType: int64
+		formatString: 0
+		lineageTag: 644a5d15-4554-49db-9a69-f8b10c8eed24
+		summarizeBy: none
+		sourceColumn: report_ready_records
+
+	column annualized_records
+		dataType: int64
+		formatString: 0
+		lineageTag: 3d2a9bdf-1782-46ff-81fd-ab58fde43546
+		summarizeBy: none
+		sourceColumn: annualized_records
+
+	column annualized_base_sum
+		dataType: double
+		lineageTag: c662e07a-b4e1-4868-9879-ff7b04063fa6
+		summarizeBy: sum
+		sourceColumn: annualized_base_sum
+
+	column gross_pay
+		dataType: double
+		lineageTag: c6409521-7006-4c12-8e48-7a76d3c97d3a
+		summarizeBy: sum
+		sourceColumn: gross_pay
+
+	column overtime_pay
+		dataType: double
+		lineageTag: 15ec98ba-53b8-4ebd-9851-c028fad6bff4
+		summarizeBy: sum
+		sourceColumn: overtime_pay
+
+	column regular_pay
+		dataType: double
+		lineageTag: 1216cc4c-e591-462d-acfb-302b6537eb8c
+		summarizeBy: sum
+		sourceColumn: regular_pay
+
+	column overtime_hours
+		dataType: double
+		lineageTag: a710f3aa-e2b8-4c37-84d6-4793c79ee0c7
+		summarizeBy: sum
+		sourceColumn: overtime_hours
+
+	column records_with_warning
+		dataType: int64
+		formatString: 0
+		lineageTag: cb4c095d-2dda-47f4-9e90-c8c4a2eef9c9
+		summarizeBy: none
+		sourceColumn: records_with_warning
+
+	partition fact_payroll = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataFolder & "fact_payroll.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Headers, {{"fiscal_year", Int64.Type}, {"payroll_number", Int64.Type}, {"work_borough", type text}, {"pay_basis", type text}, {"records", Int64.Type}, {"report_ready_records", Int64.Type}, {"annualized_records", Int64.Type}, {"annualized_base_sum", type number}, {"gross_pay", type number}, {"overtime_pay", type number}, {"regular_pay", type number}, {"overtime_hours", type number}, {"records_with_warning", Int64.Type}}, "en-US")
+				in
+					Typed
+

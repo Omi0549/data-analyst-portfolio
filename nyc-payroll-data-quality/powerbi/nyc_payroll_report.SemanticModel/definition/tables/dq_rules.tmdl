@@ -1,0 +1,83 @@
+table dq_rules
+	lineageTag: a9f35644-fde6-4d56-b49d-6c33793042c3
+
+	column rule_id
+		dataType: string
+		lineageTag: c772fe38-a75c-4e36-b6dd-b0633d939aad
+		summarizeBy: none
+		sourceColumn: rule_id
+
+	column req_id
+		dataType: string
+		lineageTag: 75c79fd7-b510-4319-aa1f-caf99dfef812
+		summarizeBy: none
+		sourceColumn: req_id
+
+	column rule
+		dataType: string
+		lineageTag: 8f640405-b346-4081-8633-122289160473
+		summarizeBy: none
+		sourceColumn: rule
+
+	column raw_failed
+		dataType: int64
+		formatString: 0
+		lineageTag: 0357eb8f-6872-427e-9f8a-12c2361c6015
+		summarizeBy: none
+		sourceColumn: raw_failed
+
+	column raw_total
+		dataType: int64
+		formatString: 0
+		lineageTag: 1b697d24-5183-4877-9e15-7679ab1da8ea
+		summarizeBy: none
+		sourceColumn: raw_total
+
+	column raw_fail_pct
+		dataType: double
+		lineageTag: b7bd2179-c7a2-4a42-9dd2-bba8bfc52656
+		summarizeBy: sum
+		sourceColumn: raw_fail_pct
+
+	column curated_failed
+		dataType: int64
+		formatString: 0
+		lineageTag: f0e5664a-df94-4822-96fd-3373d1a0a846
+		summarizeBy: none
+		sourceColumn: curated_failed
+
+	column curated_total
+		dataType: int64
+		formatString: 0
+		lineageTag: 2e57734a-6e0a-4d52-9db7-7f00544af4fc
+		summarizeBy: none
+		sourceColumn: curated_total
+
+	column curated_fail_pct
+		dataType: double
+		lineageTag: b894aafd-f878-45d8-adf5-4bbb4ec4d63d
+		summarizeBy: sum
+		sourceColumn: curated_fail_pct
+
+	column threshold_pct
+		dataType: double
+		lineageTag: ca41c6ab-f954-49a2-8710-5759db0b9ebd
+		summarizeBy: sum
+		sourceColumn: threshold_pct
+
+	column curated_status
+		dataType: string
+		lineageTag: 11d7f07c-a7ed-434e-8515-20a4c0bdf69c
+		summarizeBy: none
+		sourceColumn: curated_status
+
+	partition dq_rules = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataFolder & "dq_rules.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Headers, {{"rule_id", type text}, {"req_id", type text}, {"rule", type text}, {"raw_failed", Int64.Type}, {"raw_total", Int64.Type}, {"raw_fail_pct", type number}, {"curated_failed", Int64.Type}, {"curated_total", Int64.Type}, {"curated_fail_pct", type number}, {"threshold_pct", type number}, {"curated_status", type text}}, "en-US")
+				in
+					Typed
+

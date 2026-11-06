@@ -1,0 +1,5 @@
+expression DataFolder = "D:\code\portfolio\nyc-payroll-data-quality\powerbi\data\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 8c95f13c-d95a-4b37-adf2-af36cc429b7c
+
+	annotation PBI_ResultType = Text
+

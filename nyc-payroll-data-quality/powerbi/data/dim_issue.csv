@@ -1,0 +1,16 @@
+issue_code,issue_name
+dq_missing_name,Employee name missing
+dq_missing_title,Job title missing
+dq_borough_unspecified,Borough unknown or other
+dq_invalid_start_date,Invalid start date
+dq_invalid_mid_init,Invalid middle initial
+dq_negative_hours,Negative hours
+dq_negative_pay,Negative regular or overtime pay
+dq_negative_other_pay,Negative other pay
+dq_ot_inconsistent,Overtime hours and pay disagree
+dq_hours_implausible,"Regular hours above 2,500"
+dq_basis_mislabeled,Pay basis looks mislabeled
+dq_placeholder_rate,Placeholder hourly rate
+dq_daily_rate_low,Daily rate too low
+dq_agency_unmapped,Agency code not mapped
+dq_possible_duplicate,Possible duplicate
